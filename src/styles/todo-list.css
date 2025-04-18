@@ -1,0 +1,9 @@
+.todo_item{
+    list-style: none;
+}
+
+.todo_item_checked {
+    list-style: none;
+    text-decoration: line-through !important;
+    color: rgb(169, 169, 169);
+}
