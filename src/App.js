@@ -7,7 +7,7 @@ function App() {
   const [editValue, setEditValue] = useState('')
   const [isEditModalOpen, setIsEditModalOpen] = useState(false)
   const [values, setValues] = useState([])
-  const [checked, setChecked] = useState(false)
+  const [checked, setChecked] = useState(true)
 
 
   const formHandler = (e) => {
@@ -22,7 +22,7 @@ function App() {
       const newData = {
         name: inputValue,
         id: uuidv4(),
-        checked: ''
+        ischecked: false
       }
 
       setValues([...values, newData])
@@ -68,14 +68,14 @@ function App() {
   }
 
   const onChackedHandler = (id) => {
-    values.filter((value) => {
+    const newValues = values.filter((value) => {
+      setChecked(!checked)
       if (value.id == id) {
-        value.checked = 'todo_item_checked'
-        setChecked(!checked)
+       value.ischecked = checked
       }
       return values
     })
-    setValues(values)
+    setValues(newValues)
   }
 
   return (

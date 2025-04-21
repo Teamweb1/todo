@@ -1,5 +1,4 @@
 
-import { useRef } from 'react'
 import EditModal from './EditModal'
 import "./styles/todo-list.css"
 
@@ -9,23 +8,16 @@ function TodoList(props) {
 
     const editValue = props.editValue
 
-  `  const itemWithIdRef = useRef(null);
-    function handleGetId(e) {
-        console.log(e)
-        itemWithIdRef.current.className = 'todo_item_checked'
-
-        console.log(itemWithIdRef.current)
-      }
-`
+console.log(props.todoValue)
     return (
         <div>
             <ul>
                 {props.todoValue.map((value) => (
-                    <li  ref={itemWithIdRef}  key={value.id}>
-                        <span>{value.name}</span>
+                    <li    key={value.id}>
+                        <span style={{textDecoration : value.ischecked ? 'line-through' : ''}}>{value.name}</span>
                         <button onClick={() => props.deleteItemHandler(value.id)}>delete</button>
                         <button onClick={() => props.editItemHandler(value.id)}>Edit</button>
-                        <button onClick={handleGetId}>✔</button>
+                        <button onClick={() => props.onChackedHandler(value.id)}>✔</button>
                     </li>
 
                 ))}
